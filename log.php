@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST');
     $sql = "SELECT * FROM Members WHERE username='$user' AND password='$pass'";
     $result = $link->query($sql);
     while($row = $result->fetch_assoc()){
+    $id = $row['ID'];
 	$first = $row['First_Name'];
 	$last = $row['Last_Name'];
 	$phone = $row['Phone'];
@@ -34,14 +35,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST');
 	$_SESSION['date'] = $date;
 	
 
-        header("Location: members.php");
-        exit();
+       
+        
     }
 
     else{
         header("Location: login.php");
         exit();
     }
+
+    $sql = "SELECT * FROM Payments WHERE Member_Id='$id'";
+    $result = $link->query($sql);
+    while($row = $result->fetch_assoc()){
+        $paydate = $row['Payment_Date'];
+        $amount = $row['Amount'];
+    }
+    if($result->num_rows > 0)
+    {
+        $_SESSION['paydate'] = $paydate;
+        $_SESSION['amount'] = $amount;
+	
+
+        header("Location: members.php");
+        exit();
+    }
+    
 
 }
 

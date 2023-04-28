@@ -2,6 +2,28 @@ body{
     background-color: #dee9ff;
 }
 
+.memtable,  .paytable{
+    border: 1px solid;
+    border-color: black;
+    border-collapse: separate;
+    
+}
+
+.memtable td, .paytable td{
+    border: 1px solid;
+    border-color: black;
+    border-collapse: separate;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.memtable th, .paytable th{
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .registration-form{
 	padding: 50px 0;
 }
