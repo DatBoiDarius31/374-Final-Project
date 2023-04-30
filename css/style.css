@@ -2,6 +2,11 @@ body{
     background-color: #dee9ff;
 }
 
+.column{
+    float:left;
+    width: 50%;
+}
+
 .memtable,  .paytable{
     border: 1px solid;
     border-color: black;

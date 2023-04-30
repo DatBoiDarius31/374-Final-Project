@@ -27,7 +27,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST');
 
     if($result->num_rows > 0)
     {
-        $_SESSION['username'] = $user;
+    $_SESSION['id'] = $id;
+    $_SESSION['username'] = $user;
 	$_SESSION['password'] = $pass;
 	$_SESSION['first'] = $first;
 	$_SESSION['last'] = $last;
@@ -41,6 +42,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST');
 
     else{
         header("Location: login.php");
+        exit();
+    }
+    if($user == "admin" && $pass = "admin")
+    {
+        header("Location: admin.php");
         exit();
     }
 
@@ -59,7 +65,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST');
         header("Location: members.php");
         exit();
     }
-    
+    header("Location: members.php");
+    exit();
 
 }
 
