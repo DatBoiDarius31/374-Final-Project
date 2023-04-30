@@ -52,7 +52,7 @@ echo var_dump($r2);
 
 if($r || $r2)
         {
-            echo '<h1>Registered!</h1><p>You are now Enrolled.</p><p><a href="members.php">Members</a></p>';
+            echo '<h1>Enrolled</h1><p>You are now Enrolled.</p><p><a href="members.php">Members</a></p>';
         }
         ?>
         <?php
