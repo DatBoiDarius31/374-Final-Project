@@ -28,7 +28,7 @@ include('header.html');
 
         if($r)
         {
-            echo '<h1>Registered!</h1><p>You are now registered.</p><p><a href="login.php">Login</a></p>';
+            echo '<h1>Registered!</h1><p>You are now registered.</p><p><a href="enrollment.html">Enroll</a></p>';
         }
         ?>
         <?php

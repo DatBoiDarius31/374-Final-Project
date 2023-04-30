@@ -1,34 +1,57 @@
 <?php
-$page_title = 'Enroll';
-include('header.html');
+// Connect to MySQL database
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        require('connect.php');
+require('connect.php');
         $errors = array();
 
-        $un = mysqli_real_escape_string($link, trim($_POST['username']));
 
-        $fn = mysqli_real_escape_string($link, trim($_POST['firstname']));
-
-        $ln = mysqli_real_escape_string($link, trim($_POST['lastname']));
-
-        $e = mysqli_real_escape_string($link, trim($_POST['phone']));
-
-        $p = mysqli_real_escape_string($link, trim($_POST['password1']));
-    }
+      
 
 
 
-    if(empty($errors))
-    {
-        $q = "INSERT INTO Members (username,first_name, last_name, phone, password, date_joined) VALUES ('$un','$fn','$ln','$e','$p',NOW())";
-        $r = @mysqli_query($link,$q);
-        echo var_dump($r);
+// Get form data
+$member_id = $_SESSION["id"];
+$programName = $_POST["programName"];
 
-        if($r)
+if($programName == "Tiny Tigers"){
+    $payment_id = 1;
+    $amount = 70.00;
+    $payment_date = date("m-d-Y");
+}
+else if($programName == "Little Ninjas"){
+    $payment_id = 2;
+    $amount = 100.00;
+    $payment_date = date("m-d-Y");
+    
+}
+else if($programName == "Junior"){
+    $payment_id = 3;
+    $amount = 120.00;
+    $payment_date = date("m-d-Y");
+}
+else if($programName == "Defense and Tactical Training Program"){
+    $payment_id = 4;
+    $amount = 170.00;
+    $payment_date = date("m-d-Y");
+}
+
+$instructor_id = $_POST["instructor_id"];
+}
+
+if(empty($errors)){
+// Insert data into MySQL table
+$q = "INSERT INTO Enrollments (member_id, payment_id, programName, instructor_id) VALUES ('$member_id', '$payment_id', '$programName', '$instructor_id')";
+$q2 = "INSERT INTO Payments (amount,member_id,payment_date) VALUES ('$payment_id','$member_id','$payment_date')";
+$r = @mysqli_query($link,$q);
+$r2 = @mysqli_query($link,$q2);
+echo var_dump($r);
+echo var_dump($r2);
+
+if($r || $r2)
         {
-            echo '<h1>Registered!</h1><p>You are now registered.</p><p><a href="login.php">Login</a></p>';
+            echo '<h1>Registered!</h1><p>You are now Enrolled.</p><p><a href="members.php">Members</a></p>';
         }
         ?>
         <?php
@@ -36,16 +59,18 @@ include('header.html');
 
         include('includes/footer.html');
         exit();
-    }
-
-    else
+}
+else
     {
         ?>
         <?php
-        echo '<h1>Error!</h1><p id="err_msg">The folowing error(s) occurred:<br>';
+        echo '<h1>Error!</h1><p id="err_msg">The following error(s) occurred:<br>';
         foreach($errors as $msg)
         {echo " - $msg<br>";}
 
         echo'Please try again.</p>';
         mysqli_close($link);
     }
+?>
+
+
