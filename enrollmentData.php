@@ -43,12 +43,10 @@ $instructor_id = $_POST["instructor_id"];
 
 if(empty($errors)){
 // Insert data into MySQL table
-$q = "INSERT INTO Enrollments (member_id, payment_id, programName, instructor_id) VALUES ('$member_id', '$payment_id', '$programName', '$instructor_id')";
-$q2 = "INSERT INTO Payments (amount,member_id,payment_date) VALUES ('$payment_id','$member_id','$payment_date')";
+$q = "INSERT INTO Enrollments (member_id, payment_id, programName, instructor_id) VALUES ('$member_id', '$payment_id', '$programName', '$instructor_id');
+INSERT INTO Payments (amount,member_id,payment_date) VALUES ('$payment_id','$member_id','$payment_date')";
 $r = @mysqli_query($link,$q);
-$r2 = @mysqli_query($link,$q2);
 echo var_dump($r);
-echo var_dump($r2);
 
 if($r || $r2)
         {
