@@ -1,5 +1,6 @@
 <?php
-// Connect to MySQL database
+$page_title = 'Enroll';
+include('header.html');
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
