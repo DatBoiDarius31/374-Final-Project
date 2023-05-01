@@ -7,6 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = array();
 
     // Get form data
+    $sSessID = 'clicktos8icvkqqgrtpkj3u610o9';
+    session_id($sSessID);
     session_start();
     $member_id = $_SESSION["id"];
     $programName = $_POST["programName"];
