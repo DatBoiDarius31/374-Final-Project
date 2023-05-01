@@ -1,4 +1,6 @@
 <?php 
+
+var_dump($_POST);
 $sSessID = 'clicktos8icvkqqgrtpkj3u610o9';
     session_id($sSessID);
     session_start();
@@ -10,12 +12,11 @@ include('header.html');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('connect.php');
     $errors = array();
-    include "connect.php";
     // Get form data
    
     $member_id = $_SESSION["id"];
     $programName = $_POST["programName"];
-
+    $instructor_id = $_POST["instructor_id"];
     if ($programName == "Tiny Tigers") {
         $payment_id = 1;
         $amount = 70.00;
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $payment_date = date("Y-m-d");
     }
 
-    $instructor_id = $_POST["instructor_id"];
+    
 
     if (empty($errors)) {
         // Insert data into MySQL table
@@ -48,6 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<h1>Enrolled</h1><p>You are now Enrolled.</p><p><a href="members.php">Members</a></p>';
         } else {
             echo '<p>' . mysqli_error($link) . '</p>';
+        }
+        if (!$r) {
+            echo "Error inserting data into Enrollments table: " . mysqli_error($link);
+        }
+        
+        if (!$r2) {
+            echo "Error inserting data into Payments table: " . mysqli_error($link);
         }
 
         mysqli_close($link);
