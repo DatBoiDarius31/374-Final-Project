@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
     $member_id = $_SESSION["id"];
     $programName = $_POST["programName"];
-    $instructor_id = $_POST["instructor_id"];
+    $instructor_id = (int)$_POST["instructor_id"];
     if ($programName == "Tiny Tigers") {
         $payment_id = 1;
         $amount = 70.00;
