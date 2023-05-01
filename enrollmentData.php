@@ -16,19 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($programName == "Tiny Tigers") {
         $payment_id = 1;
         $amount = 70.00;
-        $payment_date = date("m-d-Y");
+        $payment_date = date("Y-m-d");
     } else if ($programName == "Little Ninjas") {
         $payment_id = 2;
         $amount = 100.00;
-        $payment_date = date("m-d-Y");
+        $payment_date = date("Y-m-d");
     } else if ($programName == "Junior") {
         $payment_id = 3;
         $amount = 120.00;
-        $payment_date = date("m-d-Y");
+        $payment_date = date("Y-m-d");
     } else if ($programName == "Defense and Tactical Training Program") {
         $payment_id = 4;
         $amount = 140.00;
-        $payment_date = date("m-d-Y");
+        $payment_date = date("Y-m-d");
     }
 
     $instructor_id = $_POST["instructors_id"];
