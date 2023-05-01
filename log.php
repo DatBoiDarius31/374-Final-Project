@@ -4,7 +4,7 @@ $sSessID = 'clicktos8icvkqqgrtpkj3u610o9';
 session_id($sSessID);
 session_start();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST');
+if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $user = $_POST['username'];
     $pass = $_POST['password1'];
@@ -70,5 +70,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST');
 
 }
 
-mysqli_close($database);
+mysqli_close($link);
 ?>

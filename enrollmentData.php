@@ -1,15 +1,18 @@
-<?php
+<?php 
+$sSessID = 'clicktos8icvkqqgrtpkj3u610o9';
+    session_id($sSessID);
+    session_start();
+
 $page_title = 'Enroll';
 include('header.html');
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require('connect.php');
     $errors = array();
-
+    include "connect.php";
     // Get form data
-    $sSessID = 'clicktos8icvkqqgrtpkj3u610o9';
-    session_id($sSessID);
-    session_start();
+   
     $member_id = $_SESSION["id"];
     $programName = $_POST["programName"];
 
