@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $payment_date = date("Y-m-d");
     }
 
-    $instructor_id = $_POST["instructors_id"];
+    $instructor_id = $_POST["instructor_id"];
 
     if (empty($errors)) {
         // Insert data into MySQL table
