@@ -14,8 +14,10 @@
 </head>
 <body>
     <?php
-    $page_title = 'Member';
+    
     include('header.html');
+    $page_title = 'Member';
+    include 'connect.php';
     $sSessID = 'clicktos8icvkqqgrtpkj3u610o9';
     session_id($sSessID);
     session_start();
@@ -72,10 +74,17 @@
         </thead>
         <tbody>
             <?php
-
-            $paydate = $_SESSION['paydate'];
-            $amount = $_SESSION['amount'];
-            echo "<tr><td>$paydate</td><td>$amount</td></tr>";
+            $id = $_SESSION['id'];
+           
+            $sql = "SELECT * FROM Payments WHERE Member_Id='$id'";
+            $result = @mysqli_query($link, $sql);
+            
+            while($row = $result->fetch_assoc()){
+                $paydate = $row['Payment_Date'];
+                $amount = $row['Amount'];            
+                
+                echo "<tr><td>$paydate</td><td>$amount</td></tr>";
+            }
             ?>
         </tbody>
     </table>

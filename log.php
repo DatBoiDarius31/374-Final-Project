@@ -50,21 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         exit();
     }
 
-    $sql = "SELECT * FROM Payments WHERE Member_Id='$id'";
-    $result = $link->query($sql);
-    while($row = $result->fetch_assoc()){
-        $paydate = $row['Payment_Date'];
-        $amount = $row['Amount'];
-    }
-    if($result->num_rows > 0)
-    {
-        $_SESSION['paydate'] = $paydate;
-        $_SESSION['amount'] = $amount;
-	
-
-        header("Location: members.php");
-        exit();
-    }
+    
     header("Location: members.php");
     exit();
 
